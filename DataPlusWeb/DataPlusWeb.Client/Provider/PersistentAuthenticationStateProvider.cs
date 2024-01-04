@@ -6,14 +6,14 @@ using System.Security.Claims;
 
 namespace DataPlusWeb.Client.Provider
 {
-    public class CustomAuthenticationStateProvider : AuthenticationStateProvider
+    public class PersistentAuthenticationStateProvider : AuthenticationStateProvider
     {
 
         // inject and initialize localstorage service
         private readonly ILocalStorageService _localStorageService;
         private readonly ICryptoService _cryptoService;
         private ClaimsPrincipal _anonymous = new ClaimsPrincipal(new ClaimsIdentity());
-        public CustomAuthenticationStateProvider(ILocalStorageService localStorageService, ICryptoService cryptoService)
+        public PersistentAuthenticationStateProvider(ILocalStorageService localStorageService, ICryptoService cryptoService)
         {
             this._localStorageService = localStorageService;
             this._cryptoService = cryptoService;

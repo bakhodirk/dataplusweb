@@ -37,7 +37,7 @@
     private async void Logout()
     {
         await localStorageService.RemoveItemAsync("UserData");
-        var cs = (CustomAuthenticationStateProvider)authStateProvider;
+        var cs = (PersistentAuthenticationStateProvider)authStateProvider;
         cs.NotifyAuthenticationState();
     }
 }

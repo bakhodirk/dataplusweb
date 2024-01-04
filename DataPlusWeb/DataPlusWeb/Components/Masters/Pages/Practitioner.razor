@@ -1,0 +1,676 @@
+﻿@page "/Masters/Practitioner"
+
+<PageTitle>Practitioner</PageTitle>
+
+<div class="flex justify-between space-x-6">
+    <p>Welcome <strong class="font-semibold">Mr.Bruce</strong>.<br>You're using version 1.0. Update available, please <a href="#">update the system</a> to get latest features.</p>
+
+    <div class="relative">
+        <button class="flex items-center space-x-3">
+            <img src="img/people/john-doe.jpg" width="40" height="40" alt="Mr. Bruce" class="rounded-full w-10 aspect-square object-cover">
+
+            <svg class="w-4 h-4 stroke-2 svg-stroke">
+                <use href="img/s-spr.svg#chevron-down"></use>
+            </svg>
+        </button>
+
+    </div>
+</div>
+
+<hr class="mt-3 mb-6 border-body/20 border-t">
+
+<div class="space-y-6">
+    <h3>Search Doctors</h3>
+
+    <form class="grid grid-cols-12 gap-y-4 gap-x-6">
+        <div class="relative col-span-6">
+            <input type="text" name="search-input" id="search-input" class="form-control pl-10" placeholder="Search by doctor's name, family or nick name">
+            <button class="absolute inset-y-0 left-0 px-3">
+                <svg class="w-4 h-4 svg-stroke text-accent">
+                    <use href="img/s-spr.svg#magnifying-glass"></use>
+                </svg>
+            </button>
+        </div>
+
+        <div x-data="{isOpen: false}" class="col-span-3 relative">
+            <button x-on:click.prevent="isOpen = ! isOpen" class="flex items-center justify-between form-control">
+                <p class="flex items-center space-x-3">
+                    <svg class="w-4 h-4 svg-stroke text-accent">
+                        <use href="img/s-spr.svg#map-pin"></use>
+                    </svg>
+                    <span>Anywhere</span>
+                </p>
+
+                <svg x-bind:class="isOpen && 'rotate-180'" class="w-3 h-3 svg-stroke">
+                    <use href="img/s-spr.svg#chevron-down"></use>
+                </svg>
+            </button>
+
+            <ul x-cloak x-on:click.away="isOpen = false" x-show="isOpen" class="dropdown">
+                <li>
+                    <label for="anywhere" class="c-checkbox px-3 py-1.5">
+                        <input type="checkbox" name="anywhere" id="anywhere">
+                        <span class="c-checkbox__icon">
+                            <svg class="svg-stroke">
+                                <use href="img/s-spr.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="c-checkbox__title">Anywhere</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="kazakhstan" class="c-checkbox px-3 py-1.5">
+                        <input type="checkbox" name="kazakhstan" id="kazakhstan">
+                        <span class="c-checkbox__icon">
+                            <svg class="svg-stroke">
+                                <use href="img/s-spr.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="c-checkbox__title">Kazakhstan</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="tadjikistan" class="c-checkbox px-3 py-1.5">
+                        <input type="checkbox" name="tadjikistan" id="tadjikistan">
+                        <span class="c-checkbox__icon">
+                            <svg class="svg-stroke">
+                                <use href="img/s-spr.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="c-checkbox__title">Tadjikistan</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="turkmenistan" class="c-checkbox px-3 py-1.5">
+                        <input type="checkbox" name="turkmenistan" id="turkmenistan">
+                        <span class="c-checkbox__icon">
+                            <svg class="svg-stroke">
+                                <use href="img/s-spr.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="c-checkbox__title">Turkmenistan</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="usa" class="c-checkbox px-3 py-1.5">
+                        <input type="checkbox" name="usa" id="usa">
+                        <span class="c-checkbox__icon">
+                            <svg class="svg-stroke">
+                                <use href="img/s-spr.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="c-checkbox__title">USA</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <div x-data="{isOpen: false}" class="col-span-3 relative">
+            <button x-on:click.prevent="isOpen = ! isOpen" class="flex items-center justify-between form-control">
+                <p class="flex items-center space-x-3">
+                    <svg class="w-4 h-4 svg-stroke text-accent">
+                        <use href="img/s-spr.svg#funnel"></use>
+                    </svg>
+                    <span>Filters</span>
+                </p>
+
+                <span class="badge">5</span>
+            </button>
+
+            <template x-teleport="body">
+                <div x-show="isOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="popup">
+                    <div class="popup__content max-w-lg">
+                        <button x-on:click="isOpen = false" type="button" class="popup__button">
+                            <svg class="w-5 h-5 svg-stroke">
+                                <use href="img/s-spr.svg#close"></use>
+                            </svg>
+                        </button>
+
+                        <div class="space-y-5">
+                            <h3 class="text-lg font-medium text-center">Set Filters</h3>
+
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="space-y-1">
+                                    <label for="popup-filter-doctor-id" class="text-xs text-body-dark">Doctor ID:</label>
+                                    <input type="text" name="popup-filter-doctor-id" id="popup-filter-doctor-id" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-parent-doctor-id" class="text-xs text-body-dark">Parent Doctor ID:</label>
+                                    <input type="text" name="popup-filter-parent-doctor-id" id="popup-filter-parent-doctor-id" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-address" class="text-xs text-body-dark">Address:</label>
+                                    <input type="text" name="popup-filter-address" id="popup-filter-address" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-city" class="text-xs text-body-dark">City:</label>
+                                    <input type="text" name="popup-filter-city" id="popup-filter-city" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-state" class="text-xs text-body-dark">City:</label>
+                                    <input type="text" name="popup-filter-state" id="popup-filter-state" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-zip" class="text-xs text-body-dark">ZIP:</label>
+                                    <input type="text" name="popup-filter-zip" id="popup-filter-zip" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-phone" class="text-xs text-body-dark">Phone:</label>
+                                    <input type="text" name="popup-filter-phone" id="popup-filter-phone" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-fax" class="text-xs text-body-dark">Fax:</label>
+                                    <input type="text" name="popup-filter-fax" id="popup-filter-fax" class="form-control">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="popup-filter-type" class="text-xs text-body-dark">Type:</label>
+                                    <div class="c-select">
+                                        <select name="popup-filter-type" id="popup-filter-type" class="form-control">
+                                            <option value="Select type" selected disabled>Type</option>
+                                            <option value="Select type">Any</option>
+                                        </select>
+
+                                        <svg class="w-3 h-3 svg-stroke">
+                                            <use href="img/s-spr.svg#chevron-down"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-x-6 gap-y-4 col-span-2">
+                                    <div>
+                                        <label for="popup-filter-active" class="c-checkbox text-xs">
+                                            <input type="checkbox" name="popup-filter-active" id="popup-filter-active">
+                                            <span class="c-checkbox__icon">
+                                                <svg class="svg-stroke">
+                                                    <use href="img/s-spr.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="c-checkbox__title">Active</span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label for="popup-filter-has-special-authority" class="c-checkbox text-xs">
+                                            <input type="checkbox" name="popup-filter-has-special-authority" id="popup-filter-has-special-authority">
+                                            <span class="c-checkbox__icon">
+                                                <svg class="svg-stroke">
+                                                    <use href="img/s-spr.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="c-checkbox__title">Has Special Authority</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="border-t">
+
+                            <div class="flex justify-center space-x-3">
+                                <button class="btn btn-clear">Cancel</button>
+                                <button class="btn btn-accent">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="flex col-span-12 flex-wrap gap-2">
+            <div class="flex items-center space-x-2 p-2 bg-white rounded">
+                <button>
+                    <svg class="w-5 h-5 svg-stroke">
+                        <use href="img/s-spr.svg#x-mark"></use>
+                    </svg>
+                </button>
+
+                <p class="flex space-x-1">
+                    <span class="opacity-80">ID:</span>
+                    <span class="text-body-dark">155278</span>
+                </p>
+            </div>
+
+            <div class="flex items-center space-x-2 p-2 bg-white rounded">
+                <button>
+                    <svg class="w-5 h-5 svg-stroke">
+                        <use href="img/s-spr.svg#x-mark"></use>
+                    </svg>
+                </button>
+
+                <p class="flex space-x-1">
+                    <span class="opacity-80">ZIP:</span>
+                    <span class="text-body-dark">100042</span>
+                </p>
+            </div>
+
+            <div class="flex items-center space-x-2 p-2 bg-white rounded">
+                <button>
+                    <svg class="w-5 h-5 svg-stroke">
+                        <use href="img/s-spr.svg#x-mark"></use>
+                    </svg>
+                </button>
+
+                <p class="flex space-x-1">
+                    <span class="opacity-80">FAX:</span>
+                    <span class="text-body-dark">998712561578</span>
+                </p>
+            </div>
+
+            <div class="flex items-center space-x-2 p-2 bg-white rounded">
+                <button>
+                    <svg class="w-5 h-5 svg-stroke">
+                        <use href="img/s-spr.svg#x-mark"></use>
+                    </svg>
+                </button>
+
+                <p class="flex space-x-1">
+                    <span class="opacity-80">Type:</span>
+                    <span class="text-body-dark">Audit</span>
+                </p>
+            </div>
+
+            <div class="flex items-center space-x-2 p-2 bg-white rounded">
+                <button>
+                    <svg class="w-5 h-5 svg-stroke">
+                        <use href="img/s-spr.svg#x-mark"></use>
+                    </svg>
+                </button>
+
+                <p class="flex space-x-1">
+                    <span class="opacity-80">Active:</span>
+                    <span class="text-body-dark">Yes</span>
+                </p>
+            </div>
+
+            <button class="a">Clear All</button>
+        </div>
+    </form>
+
+    <div class="flex items-center justify-between">
+        <p>We've found 287 doctors</p>
+
+        <div x-data="{isTableSettingsOpen: false}" class="flex space-x-3">
+            <a href="add-practitioner.html" class="btn btn-accent btn-with-icon">
+                <svg class="w-5 h-5 svg-stroke">
+                    <use href="img/s-spr.svg#plus"></use>
+                </svg>
+
+                <span>Add doctor</span>
+            </a>
+
+            <button x-on:click="isTableSettingsOpen = true" class="btn btn-accent">
+                <svg class="w-5 h-5 svg-stroke">
+                    <use href="img/s-spr.svg#adjustments-vertical"></use>
+                </svg>
+            </button>
+
+            <template x-teleport="body">
+                <div x-show="isTableSettingsOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="popup">
+                    <div class="popup__content max-w-lg">
+                        <button x-on:click="isTableSettingsOpen = false" type="button" class="popup__button">
+                            <svg class="w-5 h-5 svg-stroke">
+                                <use href="img/s-spr.svg#close"></use>
+                            </svg>
+                        </button>
+
+                        <div class="space-y-5">
+                            <h3 class="text-lg font-medium text-center">Set Columns</h3>
+
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <label for="popup-table-id" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-id" id="popup-table-id" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">ID</span>
+                                </label>
+
+                                <label for="popup-table-state" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-state" id="popup-table-state" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">State</span>
+                                </label>
+
+                                <label for="popup-table-doctor-id" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-doctor-id" id="popup-table-doctor-id" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Doctor ID</span>
+                                </label>
+
+                                <label for="popup-table-address" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-address" id="popup-table-address" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Address</span>
+                                </label>
+
+                                <label for="popup-table-parent-doctor-id" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-parent-doctor-id" id="popup-table-parent-doctor-id">
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Parent Doctor ID</span>
+                                </label>
+
+                                <label for="popup-table-zip" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-zip" id="popup-table-zip" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">ZIP</span>
+                                </label>
+
+                                <label for="popup-table-name" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-name" id="popup-table-name" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Name</span>
+                                </label>
+
+                                <label for="popup-table-active" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-active" id="popup-table-active" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Active</span>
+                                </label>
+
+                                <label for="popup-table-type" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-type" id="popup-table-type" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">Type</span>
+                                </label>
+
+                                <label for="popup-table-city" class="c-checkbox text-xs">
+                                    <input type="checkbox" name="popup-table-city" id="popup-table-city" checked>
+                                    <span class="c-checkbox__icon">
+                                        <svg class="svg-stroke">
+                                            <use href="img/s-spr.svg#check"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="c-checkbox__title">City</span>
+                                </label>
+                            </div>
+
+                            <hr class="border-t">
+
+                            <div class="flex justify-center space-x-3">
+                                <button class="btn btn-clear">Cancel</button>
+                                <button class="btn btn-accent">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <div class="table-overflow">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <button>
+                            <span>ID</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Doctor ID</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Parent Doctor ID</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Name</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Type</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>City</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>State</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Address</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>ZIP</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <button>
+                            <span>Active</span>
+                            <svg class="w-4 h-4 svg-stroke">
+                                <use href="img/s-spr.svg#arrows-up-down"></use>
+                            </svg>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>389884</td>
+                    <td>24093</td>
+                    <td>3889741</td>
+                    <td>Eleanor Andrea Pena Junior</td>
+                    <td>Audit</td>
+                    <td>Orange</td>
+                    <td>MA</td>
+                    <td>St. Francisco Bellatore street Nginx district, 4A-4</td>
+                    <td>10042</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>88597</td>
+                    <td>88798</td>
+                    <td>9963256</td>
+                    <td>Bessie Copper Switcerland</td>
+                    <td>Audit</td>
+                    <td>Naperville</td>
+                    <td>MO</td>
+                    <td>Juan Iglesias St. Bernabeauo, 25 Floor 2</td>
+                    <td>50054</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

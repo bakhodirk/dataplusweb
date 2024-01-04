@@ -1,0 +1,70 @@
+﻿@page "/Account/Login"
+@attribute [AllowAnonymous]
+
+<PageTitle>Log in</PageTitle>
+
+<div class="container max-w-4xl space-y-4 z-10">
+    <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" fill="none" class="text-white">
+            <path fill="currentColor" d="M30.423 18.302c-.98 8.05-10.498 11.221-19.166 10.166-8.67-1.056-9.123-5.76-8.142-13.812C4.095 6.606 6.28 2.223 14.95 3.28c8.669 1.055 16.454 6.972 15.473 15.023Z" />
+            <path fill="#2A6CCF" d="M29.36 17.382C28.59 25.48 17.95 30.34 10.066 30.34c-7.884 0-7.884 1.5-7.884-15.546C2.182-.49 1.576 1.015 12.86 1.015c8.474 0 17.272 8.27 16.5 16.367Z" />
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13.957 9.71v11.495m5.747-5.747H8.21" />
+        </svg>
+    </a>
+
+    <div class="flex rounded overflow-hidden shadow-2xl">
+        <div class="w-5/12 p-8 text-white bg-accent/90 flex items-center">
+            <p class="text-2xl font-extralight">Log in to your Data&nbsp;Plus account.</p>
+        </div>
+
+        <div class="w-7/12 p-8 py-24 bg-white">
+            <form x-data="{isError: false}" class="space-y-3">
+                <div class="flex gap-3">
+                    <div class="w-6/12 space-y-1">
+                        <label for="login-name">Username</label>
+
+                        <div class="relative">
+                            <input type="text" x-bind:class="isError && 'ring-error focus:ring-error text-error shadow-none'" name="login-name" id="login-name" class="form-control">
+
+                            <svg x-cloak x-show="isError" class="w-4 h-4 svg-stroke stroke-error absolute top-1/2 -translate-y-1/2 right-2">
+                                <use href="img/s-spr.svg#exclamation-triangle"></use>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="w-6/12 space-y-1">
+                        <label for="login-password">Password</label>
+
+                        <div x-data="{isSecure: true}" class="relative">
+                            <input x-bind:type="isSecure ? 'password' : 'text'" x-bind:class="isError && 'ring-error focus:ring-error text-error shadow-none'" name="login-password" id="login-password" class="form-control pr-11">
+                            <button x-bind:class="isError && 'hidden'" x-on:click.prevent="isSecure = ! isSecure" class="absolute inset-y-0 right-0 px-2">
+                                <svg x-cloak x-show="isSecure" class="w-4 h-4 svg-stroke">
+                                    <use href="img/s-spr.svg#eye"></use>
+                                </svg>
+
+                                <svg x-cloak x-show="!isSecure" class="w-4 h-4 svg-stroke">
+                                    <use href="img/s-spr.svg#eye-slash"></use>
+                                </svg>
+                            </button>
+
+                            <svg x-cloak x-show="isError" class="w-4 h-4 svg-stroke stroke-error absolute top-1/2 -translate-y-1/2 right-2">
+                                <use href="img/s-spr.svg#exclamation-triangle"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <p x-cloak x-show="isError" class="text-xs text-error">There were some errors in your form, please check and try again.</p>
+
+                <button class="btn btn-accent uppercase tracking-wider w-full">Log in</button>
+
+                <p><a href="#">Forgot Password?</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-white/80 space-y-1.5 text-xs">
+        <p>&copy&nbsp;2023 Copyright, All Rights Reserved by Data Plus. <a href="#" class="text-white/80">Terms and Conditions</a></p>
+        <p>This product is protected as an intellectual property by Laws of US Government. If want to use it legally, <a href="#" class="text-white/80">please contact us</a>.</p>
+    </div>
+</div>

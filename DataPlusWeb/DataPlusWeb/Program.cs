@@ -1,5 +1,6 @@
-using DataPlusWeb.Client.Pages;
+using DataPlusWeb.Client.Provider;
 using DataPlusWeb.Components;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddCascadingAuthenticationState();
+//builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
 
 var app = builder.Build();
 
@@ -23,10 +30,16 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseBlazorFrameworkFiles();
+
 app.UseStaticFiles();
 app.UseAntiforgery();
-app.UseRouting();
-app.MapFallbackToFile("index.html");
+
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode()
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies(typeof(PersistentAuthenticationStateProvider).Assembly);
+
+// Add additional endpoints required by the Identity /Account Razor components.
+//app.MapAdditionalIdentityEndpoints();
 
 app.Run();

@@ -1,0 +1,126 @@
+﻿
+<aside class="sidebar p-4 flex flex-col space-y-8">
+    <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" fill="none" class="text-white">
+            <path fill="currentColor" d="M30.423 18.302c-.98 8.05-10.498 11.221-19.166 10.166-8.67-1.056-9.123-5.76-8.142-13.812C4.095 6.606 6.28 2.223 14.95 3.28c8.669 1.055 16.454 6.972 15.473 15.023Z" />
+            <path fill="#2A6CCF" d="M29.36 17.382C28.59 25.48 17.95 30.34 10.066 30.34c-7.884 0-7.884 1.5-7.884-15.546C2.182-.49 1.576 1.015 12.86 1.015c8.474 0 17.272 8.27 16.5 16.367Z" />
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13.957 9.71v11.495m5.747-5.747H8.21" />
+        </svg>
+    </a>
+
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#identification"></use>
+                    </svg>
+                    <span>Date entry</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#book-open"></use>
+                    </svg>
+                    <span>Orders</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#phone-arrow-up-right"></use>
+                    </svg>
+                    <span>Calling</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#arrow-uturn-right"></use>
+                    </svg>
+                    <span>Routing</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#pencil-square"></use>
+                    </svg>
+                    <span>Quality Control</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#currency-dollar"></use>
+                    </svg>
+                    <span>Billing</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#presentation-chart-line"></use>
+                    </svg>
+                    <span>Accounting</span>
+                </a>
+            </li>
+
+            <li x-data="{isOpen: false}">
+                <button x-on:click="isOpen = ! isOpen" x-bind:class="isOpen && 'is_active'" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#cube"></use>
+                    </svg>
+                    <span>Masters</span>
+                </button>
+
+                <ul x-cloak x-show="isOpen" class="sidebar-nav__inner">
+                    <li><a href="/Masters/Practitioner">Practitioner</a></li>
+                    <li><a href="#">Holidays</a></li>
+                    <li><a href="#">Teams</a></li>
+                    <li><a href="#">Measure</a></li>
+                    <li><a href="#">Routes</a></li>
+                    <li><a href="#">Sales state</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#hand-raised"></use>
+                    </svg>
+                    <span>Administration</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#rectangle-group"></use>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="sidebar-nav !mt-auto pt-4 border-white/10 border-t">
+        <ul>
+            <li>
+                <a href="#">
+                    <svg class="w-6 h-6 svg-stroke">
+                        <use href="img/s-spr.svg#question-mark-circle"></use>
+                    </svg>
+                    <span>Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
