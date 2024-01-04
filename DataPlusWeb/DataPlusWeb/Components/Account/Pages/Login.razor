@@ -18,7 +18,8 @@
         </div>
 
         <div class="w-7/12 p-8 py-24 bg-white">
-            <form x-data="{isError: false}" class="space-y-3">
+            <form method="post" x-data="{isError: false}" class="space-y-3" @onsubmit="LoginSubmit" @formname="login-form">
+                <AntiforgeryToken />
                 <div class="flex gap-3">
                     <div class="w-6/12 space-y-1">
                         <label for="login-name">Username</label>
@@ -56,10 +57,11 @@
 
                 <p x-cloak x-show="isError" class="text-xs text-error">There were some errors in your form, please check and try again.</p>
 
-                <button class="btn btn-accent uppercase tracking-wider w-full">Log in</button>
+                <button type="submit" class="btn btn-accent uppercase tracking-wider w-full">@(_isloading ? "Logging in, please wait..." : "Log in")</button>
 
                 <p><a href="#">Forgot Password?</a></p>
             </form>
+            <button class="btn btn-accent uppercase tracking-wider w-full" @onclick="LoginSubmit">@(_isloading ? "Logging in, please wait..." : "Log in")</button>
         </div>
     </div>
 
@@ -68,3 +70,28 @@
         <p>This product is protected as an intellectual property by Laws of US Government. If want to use it legally, <a href="#" class="text-white/80">please contact us</a>.</p>
     </div>
 </div>
+
+@code {
+    [SupplyParameterFromForm]
+    public Starship? Model { get; set; }
+
+    public bool _isloading;
+
+    protected override void OnInitialized() => Model ??= new();
+
+    private async Task LoginSubmit()
+    {
+        _isloading = true;
+        await InvokeAsync(StateHasChanged);
+
+        await Task.Delay(5000);
+
+        _isloading = false;
+
+    }
+
+    public class Starship
+    {
+        public string? Id { get; set; }
+    }
+}

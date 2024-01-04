@@ -1,4 +1,6 @@
 ﻿@page "/Masters/Practitioner"
+@rendermode InteractiveAuto
+@* @attribute [StreamRendering] *@
 
 <PageTitle>Practitioner</PageTitle>
 
@@ -21,6 +23,9 @@
 
 <div class="space-y-6">
     <h3>Search Doctors</h3>
+
+    <button @onclick="Increment">rest</button>
+    <p>@_counter</p>
 
     <form class="grid grid-cols-12 gap-y-4 gap-x-6">
         <div class="relative col-span-6">
@@ -674,3 +679,12 @@
         </table>
     </div>
 </div>
+
+@code {
+    private int _counter;
+
+    public void Increment()
+    {
+        _counter++;
+    }
+}

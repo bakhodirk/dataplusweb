@@ -24,7 +24,7 @@ builder.Services.AddSubtleCrypto(opt =>
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+builder.Services.AddScoped<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
 builder.Services.AddScoped<CustomHttpHandler>();
 
 await builder.Build().RunAsync();
