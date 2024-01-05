@@ -10,5 +10,11 @@
     <ProjectReference Include="..\DataPlusWeb.Client\DataPlusWeb.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <Reference Include="DataPlus.Auth.API.Contracts">
+      <HintPath>..\..\ExternalLibs\DataPlus.Auth.API.Contracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
 </Project>

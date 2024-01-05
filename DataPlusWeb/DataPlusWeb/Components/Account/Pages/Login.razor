@@ -1,5 +1,8 @@
 ﻿@page "/Account/Login"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication.Cookies
 @attribute [AllowAnonymous]
+@inject IAuthService authService
 
 <PageTitle>Log in</PageTitle>
 
@@ -57,11 +60,10 @@
 
                 <p x-cloak x-show="isError" class="text-xs text-error">There were some errors in your form, please check and try again.</p>
 
-                <button type="submit" class="btn btn-accent uppercase tracking-wider w-full">@(_isloading ? "Logging in, please wait..." : "Log in")</button>
+                <button type="submit" class="btn btn-accent uppercase tracking-wider w-full">Log in</button>
 
                 <p><a href="#">Forgot Password?</a></p>
             </form>
-            <button class="btn btn-accent uppercase tracking-wider w-full" @onclick="LoginSubmit">@(_isloading ? "Logging in, please wait..." : "Log in")</button>
         </div>
     </div>
 
@@ -72,26 +74,26 @@
 </div>
 
 @code {
-    [SupplyParameterFromForm]
-    public Starship? Model { get; set; }
-
-    public bool _isloading;
-
-    protected override void OnInitialized() => Model ??= new();
+    [Inject]
+    private IHttpContextAccessor HttpContextAccessor { get; set; } = default!;
 
     private async Task LoginSubmit()
     {
-        _isloading = true;
-        await InvokeAsync(StateHasChanged);
+        var form = HttpContextAccessor.HttpContext!.Request.Form;
+        var loginDetails = new LoginViewModel { UserName = form["login-name"], Password = form["login-password"] };
 
-        await Task.Delay(5000);
+        if (loginDetails?.UserName is null || loginDetails?.Password is null) return;
 
-        _isloading = false;
+        var user = await authService.FindByUser(loginDetails.UserName, loginDetails.Password);
 
-    }
+        var claimsIdentity = new ClaimsIdentity(new List<Claim>
+             {
+                 new Claim("u_username", user.UserName),
+                 new Claim(ClaimTypes.Role, "admin"),
+             }, "auth");
 
-    public class Starship
-    {
-        public string? Id { get; set; }
+        var userClaims = new ClaimsPrincipal(claimsIdentity);
+
+        await HttpContextAccessor.HttpContext!.SignInAsync(userClaims, new AuthenticationProperties { IsPersistent = true }).ConfigureAwait(false);
     }
 }
