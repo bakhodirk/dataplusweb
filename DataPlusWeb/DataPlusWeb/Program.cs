@@ -1,6 +1,7 @@
 using DataPlusWeb.Client.Provider;
 using DataPlusWeb.Components;
 using DataPlusWeb.Components.Account.Services;
+using DataPlusWeb.Handlers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddSingleton<IAuthService, AuthService>();
+
+builder.Services.AddHttpClient("AuthAPI", options =>
+{
+	options.BaseAddress = new Uri("https://localhost:7086/");
+});
 
 var app = builder.Build();
 
