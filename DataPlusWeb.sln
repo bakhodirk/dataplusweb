@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34407.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlusWeb", "DataPlusWeb\DataPlusWeb\DataPlusWeb.csproj", "{9B5A902A-CE17-4B1F-88EA-6200421991A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb", "DataPlusWeb\DataPlusWeb\DataPlusWeb.csproj", "{9B5A902A-CE17-4B1F-88EA-6200421991A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlusWeb.Client", "DataPlusWeb\DataPlusWeb.Client\DataPlusWeb.Client.csproj", "{9811433A-9BD2-472F-A0EC-34E048D0826D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Client", "DataPlusWeb\DataPlusWeb.Client\DataPlusWeb.Client.csproj", "{9811433A-9BD2-472F-A0EC-34E048D0826D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlusWeb.Shared", "DataPlusWeb\DataPlusWeb.Shared\DataPlusWeb.Shared.csproj", "{F96532FE-585B-4499-B433-7C95670F0CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Shared", "DataPlusWeb\DataPlusWeb.Shared\DataPlusWeb.Shared.csproj", "{F96532FE-585B-4499-B433-7C95670F0CDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
