@@ -6,6 +6,7 @@
 
 <PageTitle>Log in</PageTitle>
 
+<p>@_errorMessage</p>
 <div class="container max-w-4xl space-y-4 z-10">
     <a href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" fill="none" class="text-white">
@@ -77,6 +78,8 @@
     [Inject]
     private IHttpContextAccessor HttpContextAccessor { get; set; } = default!;
 
+    private string? _errorMessage;
+
     private async Task LoginSubmit()
     {
         var form = HttpContextAccessor.HttpContext!.Request.Form;
@@ -84,16 +87,25 @@
 
         if (loginDetails?.UserName is null || loginDetails?.Password is null) return;
 
-        var user = await authService.FindByUser(loginDetails.UserName, loginDetails.Password);
+        try
+        {
+            var user = await authService.FindByUser(loginDetails.UserName, loginDetails.Password);
 
-        var claimsIdentity = new ClaimsIdentity(new List<Claim>
+            var claimsIdentity = new ClaimsIdentity(new List<Claim>
              {
                  new Claim("u_username", user.UserName),
                  new Claim(ClaimTypes.Role, "admin"),
              }, "auth");
 
-        var userClaims = new ClaimsPrincipal(claimsIdentity);
+            var userClaims = new ClaimsPrincipal(claimsIdentity);
 
-        await HttpContextAccessor.HttpContext!.SignInAsync(userClaims, new AuthenticationProperties { IsPersistent = true }).ConfigureAwait(false);
+            await HttpContextAccessor.HttpContext!.SignInAsync(userClaims, new AuthenticationProperties { IsPersistent = true }).ConfigureAwait(false);
+
+            _errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            _errorMessage = ex.Message;
+        }
     }
 }
