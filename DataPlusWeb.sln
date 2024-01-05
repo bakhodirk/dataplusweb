@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Client", "DataP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Shared", "DataPlusWeb\DataPlusWeb.Shared\DataPlusWeb.Shared.csproj", "{F96532FE-585B-4499-B433-7C95670F0CDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlusWeb.UI", "DataPlusWeb\DataPlusWeb.UI\DataPlusWeb.UI.csproj", "{364867E3-0BD4-4180-AC7F-B3ED2957AC37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F96532FE-585B-4499-B433-7C95670F0CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96532FE-585B-4499-B433-7C95670F0CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96532FE-585B-4499-B433-7C95670F0CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

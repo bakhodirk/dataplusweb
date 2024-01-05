@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataPlusWeb.Shared\DataPlusWeb.Shared.csproj" />
+    <ProjectReference Include="..\DataPlusWeb.UI\DataPlusWeb.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
