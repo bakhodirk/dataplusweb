@@ -18,6 +18,8 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 //    options.BaseAddress = new Uri("https://localhost:7086/");
 //}).AddHttpMessageHandler<CustomHttpHandler>();
 
+builder.Services.DataPlusServiceWeb();
+
 builder.Services.AddSubtleCrypto(opt =>
     opt.Key = "ELE9xOyAyJHCsIPLMbbZHQ7pVy7WUlvZ60y5WkKDGMSw5xh5IM54kUPlycKmHF9VGtYUilglL8iePLwr");
 

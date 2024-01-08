@@ -3,7 +3,7 @@ using DataPlus.Web.UI.Components;
 
 namespace DataPlusWeb.Client.Pages.Masters.Practitioner;
 
-public partial class Practitioner
+public partial class PractitionerOverview
 {
     public class ViewContext
     {

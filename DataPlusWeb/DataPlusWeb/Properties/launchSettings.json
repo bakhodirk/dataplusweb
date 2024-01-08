@@ -28,8 +28,8 @@
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         },
-        //"launchUrl": "Masters/Practitioner",
-        "launchUrl": "demo/datagrid"
+        "launchUrl": "Masters/Practitioner",
+        //"launchUrl": "demo/datagrid"
       },
       "IIS Express": {
         "commandName": "IISExpress",

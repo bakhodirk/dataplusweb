@@ -1,7 +1,9 @@
 using DataPlusWeb.Client.Provider;
+using DataPlusWeb.Client.Services;
 using DataPlusWeb.Components;
 using DataPlusWeb.Components.Account.Services;
 using DataPlusWeb.Handlers;
+using DataPlusWeb.Shared.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddSingleton<IAuthService, AuthService>();
+builder.Services.DataPlusServiceWeb();
 
 builder.Services.AddHttpClient("AuthAPI", options =>
 {

@@ -4,7 +4,7 @@ namespace DataPlusWeb.Client.Pages.Masters.Practitioner;
 
 public class PractitionerViewModel
 {
-    public int ID { get; set; }
+    public long Id { get; set; }
 
     public int DoctorID { get; set; }
 
