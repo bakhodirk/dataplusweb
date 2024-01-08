@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Reference Include="DataPlus.API.Contracts">
-      <HintPath>..\..\..\..\DataPlus\dataplus\src\DataPlus.API.Contracts\bin\Debug\net8.0\DataPlus.API.Contracts.dll</HintPath>
+      <HintPath>..\..\ExternalLibs\DataPlus.API.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="DataPlus.Auth.API.Contracts">
       <HintPath>..\..\ExternalLibs\DataPlus.Auth.API.Contracts.dll</HintPath>
