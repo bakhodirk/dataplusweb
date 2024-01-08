@@ -18,7 +18,7 @@
 </head>
 
 <body x-data="{bodyScroll: true, ishome: @(NavigationManager.Uri.Contains("/Login").ToString().ToLowerInvariant())}" x-bind:class="{ 'overflow-hidden': bodyScroll, 'home': ishome }">
-    <Routes />
+    <Routes @rendermode="InteractiveServer" />
     <script src="_framework/blazor.web.js"></script>
 </body>
 

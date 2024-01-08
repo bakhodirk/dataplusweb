@@ -7,7 +7,7 @@
 
         foreach (var item in Grid.GetDisplayData())
         {
-            <_DataGridRow TItem="TItem" Item="@item" Columns="@Columns" HoverCursor="@(Grid.RowHoverCursor?.Invoke(item) ?? Cursor.Default)" Clicked="@Grid.InvokeRowClicked" DoubleClicked="@Grid.InvokeRowDoubleClicked" />
+            <_DataGridRow TItem="TItem" Item="item" Columns="Columns" HoverCursor="@(Grid.RowHoverCursor?.Invoke(item) ?? Cursor.Default)" Clicked="Grid.InvokeRowClicked" DoubleClicked="Grid.InvokeRowDoubleClicked" />
 
             hasRows = true;
         }

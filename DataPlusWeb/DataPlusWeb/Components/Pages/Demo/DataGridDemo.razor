@@ -1,6 +1,6 @@
 ﻿@page "/demo/datagrid"
 @using System.ComponentModel.DataAnnotations
- 
+
 <Contextual TContext="DataGridDemoContext">
 
     <DataGrid TItem="DataGridDemoViewModel" @bind-Items="@_items">
@@ -14,7 +14,7 @@
 
 </Contextual>
 
-<DataGrid TItem="DataGridDemoViewModel" Items="@_items" RowClicked="OnRowClicked">
+<DataGrid TItem="DataGridDemoViewModel" @bind-Items="@_items" RowClicked="OnRowClicked" ReadItems="LoadItems">
     <DataGridColumns>
         <DataGridColumn TItem="DataGridDemoViewModel" Property="Id" Header="ID" />
         <DataGridColumn TItem="DataGridDemoViewModel" Property="Name" Header="Client Name" />
@@ -32,6 +32,12 @@
 {
     private IEnumerable<DataGridDemoViewModel>? _items = new DataGridDemoViewModel[] { new DataGridDemoViewModel { Id = 1, Name = "Item 1", DoctorId = "asdas" }, new DataGridDemoViewModel { Id = 2, Name = "Item 2", DoctorId = "eewrerewr" } };
     private IEnumerable<DataGridDemoViewModel>? _filter;
+
+    void LoadItems(DataGridReadDataEventArgs<DataGridDemoViewModel> e)
+    {
+
+        
+    }
 
     void OnRowClicked(DataGridRowMouseEventArgs<DataGridDemoViewModel> e)
     { }

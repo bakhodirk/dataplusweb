@@ -3,7 +3,7 @@
 
 @if (Columns is not null)
 {
-    <tr @onclick="@OnClicked">
+    <tr @onclick="OnClicked">
         @foreach (var column in Columns)
         {
             <_DataGridCell TItem="TItem" Row="@this" Column="@column" Item="Item" />
