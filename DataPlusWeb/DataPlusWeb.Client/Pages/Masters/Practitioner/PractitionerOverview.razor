@@ -287,12 +287,12 @@
 		<p>We've found 287 doctors</p>
 
 		<div x-data="{isTableSettingsOpen: false}" class="flex space-x-3">
-			<a href="add-practitioner.html" class="btn btn-accent btn-with-icon">
+			<a href="/Masters/Practitioner/New" class="btn btn-accent btn-with-icon">
 				<svg class="w-5 h-5 svg-stroke">
 					<use href="img/s-spr.svg#plus"></use>
 				</svg>
 
-				<span>Add doctor</span>
+				<span>Add practitioner</span>
 			</a>
 
 			<button x-on:click="isTableSettingsOpen = true" class="btn btn-accent">
@@ -429,7 +429,7 @@
 	</div>
 
 	<div class="table-overflow">
-		<DataGrid TItem="PractitionerViewModel" @bind-Items="@_items" ReadItems="LoadItems">
+		<DataGrid TItem="PractitionerViewModel" @bind-Items="@_items" ReadItems="LoadItems" RowClicked="OnPractitionerClicked">
 			<DataGridColumns>
 				<DataGridColumn TItem="PractitionerViewModel" Property="@nameof(PractitionerViewModel.Id)" Header="ID" />
 				<DataGridColumn TItem="PractitionerViewModel" Property="@nameof(PractitionerViewModel.Name)" Header="Name" />
@@ -444,33 +444,3 @@
 		</DataGrid>
 	</div>
 </div>
-
-@code {
-	private IEnumerable<PractitionerViewModel>? _items = new PractitionerViewModel[] { };
-
-	async Task LoadItems(DataGridReadDataEventArgs<PractitionerViewModel> e)
-	{
-		var response = await DataPlusService.GetPractitionerList(BaseGetListAPIRequest.GetAllRecordsListRequest<GetPractitionerListAPIRequest>());
-
-		_items = (from d in response.Records
-			select new PractitionerViewModel()
-					  {
-						  Id = d.Id,
-						  Name = d.FirstName,
-						  Address = d.MiddleName
-					  }).ToArray();
-
-		// var data = await DataPlusService.GetPractitionerList(BaseGetListAPIRequest.GetAllRecordsListRequest<GetPractitionerListAPIRequest>());
-
-		// foreach (var item in data.Records)
-		// {
-		//     _items.Append(new PractitionerViewModel()
-		//     {
-		//         Id = item.Id,
-		//         Name = item.FirstName,
-		//         Address = item.MiddleName
-		//     });
-		// }
-	}
-
-}

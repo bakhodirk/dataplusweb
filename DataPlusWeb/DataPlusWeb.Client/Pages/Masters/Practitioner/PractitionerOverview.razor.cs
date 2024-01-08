@@ -1,32 +1,31 @@
-﻿
+﻿using DataPlus.API.Contracts.Requests;
 using DataPlus.Web.UI.Components;
+using Microsoft.AspNetCore.Components;
 
 namespace DataPlusWeb.Client.Pages.Masters.Practitioner;
 
 public partial class PractitionerOverview
 {
-    public class ViewContext
-    {
+    [Inject]
+    public NavigationManager NavigationManager {  get; set; } 
 
-        //public async IAsyncEnumerable<PractitionerViewModel> GetPractitionerList(CancellationToken cancellationToken)
-        //{ }
+    private IEnumerable<PractitionerViewModel>? _items = new PractitionerViewModel[] { };
+
+    async Task LoadItems(DataGridReadDataEventArgs<PractitionerViewModel> e)
+    {
+        var response = await DataPlusService.GetPractitionerList(BaseGetListAPIRequest.GetAllRecordsListRequest<GetPractitionerListAPIRequest>());
+
+        _items = (from d in response.Records
+                  select new PractitionerViewModel()
+                  {
+                      Id = d.Id,
+                      Name = d.FirstName,
+                      Address = d.MiddleName
+                  }).ToArray();
     }
 
-    private IEnumerable<PractitionerViewModel> _practitioners = new PractitionerViewModel[0];
-
-    private void LoadPractitioners(DataGridReadDataEventArgs<PractitionerViewModel> e)
+    private void OnPractitionerClicked(DataGridRowMouseEventArgs<PractitionerViewModel> e)
     {
-        //await Task.Delay(10);
-        //await Task.Delay(10000);
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    _practitioners
-        //}
-        //Console.WriteLine("asdsa");
-    }
-
-    protected override Task OnInitializedAsync()
-    {
-        return base.OnInitializedAsync();
+        NavigationManager.NavigateTo($"/Masters/Practitioner/{e.Item.Id}/Edit", true);
     }
 }
