@@ -1,0 +1,29 @@
+﻿@typeparam TItem
+@inherits DataGridComponentBase<TItem>
+
+@if (Column is not null && Item is not null)
+{
+    <td>
+        @if (Column.CellTemplate != null)
+        {
+            @Column.CellTemplate(Item)
+        }
+        else
+        {
+            var value = Column.GetValue(Item);
+            if (value is null && Grid.EmptyCellTemplate is not null)
+            {
+                @Grid.EmptyCellTemplate(Item)
+            }
+            else
+            {
+                @Column.FormatCellValue(value)
+            }
+        }
+    </td>
+}
+else
+{
+    <td></td>
+}
+

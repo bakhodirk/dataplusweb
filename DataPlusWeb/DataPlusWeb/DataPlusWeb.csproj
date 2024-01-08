@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataPlusWeb.Client\DataPlusWeb.Client.csproj" />
+    <ProjectReference Include="..\DataPlusWeb.UI\DataPlusWeb.UI.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
   

@@ -1,0 +1,20 @@
+﻿@typeparam TItem
+@inherits DataGridComponentBase<TItem>
+@namespace DataPlus.Web.UI.Components
+
+@using DataPlus.Web.UI.Components.DataGrid
+
+<CascadingValue Value="this" IsFixed="true">
+    <table class="table">
+        @if (!HideColumns)
+        {
+            <_DataGridHeader TItem="TItem" Columns="@Columns" />
+        }
+        <_DataGridBody TItem="TItem" Columns="@Columns" />
+    </table>
+</CascadingValue>
+
+@* Hold internal components *@
+<CascadingValue Value="@this" IsFixed="true">
+    @DataGridColumns
+</CascadingValue>

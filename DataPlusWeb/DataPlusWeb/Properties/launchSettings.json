@@ -27,7 +27,9 @@
         "applicationUrl": "https://localhost:7097;http://localhost:5208",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
-        }
+        },
+        //"launchUrl": "Masters/Practitioner",
+        "launchUrl": "demo/datagrid"
       },
       "IIS Express": {
         "commandName": "IISExpress",

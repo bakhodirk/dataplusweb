@@ -1,0 +1,25 @@
+﻿@typeparam TItem
+@inherits DataGridComponentBase<TItem>
+
+<tbody>
+    @{
+        var hasRows = false;
+
+        foreach (var item in Grid.GetDisplayData())
+        {
+            <_DataGridRow TItem="TItem" Item="@item" Columns="@Columns" HoverCursor="@(Grid.RowHoverCursor?.Invoke(item) ?? Cursor.Default)" Clicked="@Grid.InvokeRowClicked" DoubleClicked="@Grid.InvokeRowDoubleClicked" />
+
+            hasRows = true;
+        }
+
+        if (Grid.IsLoading && Grid.LoadingTemplate is not null)
+        {
+            @Grid.LoadingTemplate
+        }
+        else if (!hasRows && Grid.EmptyTemplate is not null && Grid.CanShowEmpty)
+        {
+            @Grid.EmptyTemplate
+        }
+    }
+    @* <p>asda</p> *@
+</tbody>

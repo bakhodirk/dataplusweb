@@ -1,0 +1,14 @@
+﻿@typeparam TItem
+@inherits DataGridComponentBase<TItem>
+
+<thead>
+    @if (Columns is not null)
+    {
+        <tr>
+            @foreach (var column in Columns)
+            {
+                <_DataGridHeaderCell TItem="TItem" Header="@this" Column="@column" />
+            }
+        </tr>
+    }
+</thead>

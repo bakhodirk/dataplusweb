@@ -1,0 +1,25 @@
+﻿@typeparam TItem
+@inherits DataGridComponentBase<TItem>
+
+@if (Column is not null)
+{
+    <th>
+        @if (Column.HeaderTemplate is null)
+        {
+            <button>
+                <span>@Column.Header</span>
+                <svg class="w-4 h-4 svg-stroke">
+                    <use href="/img/s-spr.svg#arrows-up-down"></use>
+                </svg>
+            </button>
+        }
+        else
+        {
+            @Column.HeaderTemplate
+        }
+    </th>
+}
+else
+{
+    <th></th>
+}

@@ -1,0 +1,75 @@
+﻿@page "/demo/datagrid"
+@using System.ComponentModel.DataAnnotations
+ 
+<Contextual TContext="DataGridDemoContext">
+
+    <DataGrid TItem="DataGridDemoViewModel" @bind-Items="@_items">
+        <EmptyTemplate>
+            <span>No items</span>
+        </EmptyTemplate>
+        <LoadingTemplate>
+            <span>Loading...</span>
+        </LoadingTemplate>
+    </DataGrid>
+
+</Contextual>
+
+<DataGrid TItem="DataGridDemoViewModel" Items="@_items" RowClicked="OnRowClicked">
+    <DataGridColumns>
+        <DataGridColumn TItem="DataGridDemoViewModel" Property="Id" Header="ID" />
+        <DataGridColumn TItem="DataGridDemoViewModel" Property="Name" Header="Client Name" />
+        <DataGridColumn TItem="DataGridDemoViewModel" Property="DoctorId" Header="DCOTOR" />
+    </DataGridColumns>
+    <EmptyTemplate>
+        <span>No items</span>
+    </EmptyTemplate>
+    <LoadingTemplate>
+        <span>Loading...</span>
+    </LoadingTemplate>
+</DataGrid>
+
+@code
+{
+    private IEnumerable<DataGridDemoViewModel>? _items = new DataGridDemoViewModel[] { new DataGridDemoViewModel { Id = 1, Name = "Item 1", DoctorId = "asdas" }, new DataGridDemoViewModel { Id = 2, Name = "Item 2", DoctorId = "eewrerewr" } };
+    private IEnumerable<DataGridDemoViewModel>? _filter;
+
+    void OnRowClicked(DataGridRowMouseEventArgs<DataGridDemoViewModel> e)
+    { }
+
+    public class DataGridDemoContext
+    {
+        public IEnumerable<DataGridDemoViewModel> GetItems()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                yield return new DataGridDemoViewModel
+                    {
+                        Id = i + 1,
+                        Name = $"Name 1"
+                    };
+            }
+        }
+    }
+
+    public class DataGridDemoViewModel
+    {
+        [Display(Name = "ID")]
+        public int Id { get; set; }
+
+        [Display(Name = "Client name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Client name")]
+        public string DoctorId { get; set; }
+    }
+
+
+    public class DataGridDemoFilterViewModel
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string DoctorId { get; set; }
+    }
+}

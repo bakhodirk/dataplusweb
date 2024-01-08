@@ -1,0 +1,7 @@
+﻿@namespace DataPlus.Web.UI.Components
+@typeparam TContext
+@inherits BaseComponent
+
+<CascadingValue TValue="ContextManager" Value="@GetContextManager()" IsFixed="true">
+    @ChildContent?.Invoke(Instance)
+</CascadingValue>

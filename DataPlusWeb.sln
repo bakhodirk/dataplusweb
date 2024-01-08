@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Client", "DataP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.Shared", "DataPlusWeb\DataPlusWeb.Shared\DataPlusWeb.Shared.csproj", "{F96532FE-585B-4499-B433-7C95670F0CDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlusWeb.UI", "DataPlusWeb\DataPlusWeb.UI\DataPlusWeb.UI.csproj", "{364867E3-0BD4-4180-AC7F-B3ED2957AC37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPlusWeb.UI", "DataPlusWeb\DataPlusWeb.UI\DataPlusWeb.UI.csproj", "{364867E3-0BD4-4180-AC7F-B3ED2957AC37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{35DF8A8E-6EDE-4171-9241-DDEF1000C7A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlus.Web.UI.Test", "DataPlus.Web.UI.Test\DataPlus.Web.UI.Test.csproj", "{F82347B4-A8AC-465C-B666-5A4B60F370CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{364867E3-0BD4-4180-AC7F-B3ED2957AC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82347B4-A8AC-465C-B666-5A4B60F370CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82347B4-A8AC-465C-B666-5A4B60F370CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82347B4-A8AC-465C-B666-5A4B60F370CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82347B4-A8AC-465C-B666-5A4B60F370CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F82347B4-A8AC-465C-B666-5A4B60F370CE} = {35DF8A8E-6EDE-4171-9241-DDEF1000C7A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8194DECE-76BB-4CCA-A59A-7B5E8097EB74}
